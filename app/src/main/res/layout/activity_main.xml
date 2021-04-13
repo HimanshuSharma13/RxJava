@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View"/>
+        <variable
+            name="androidVersionViewModel"
+            type="com.learn.mvvmrx.viewModel.AndroidVersionViewModel" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".view.MainActivity">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary" />
+
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rl_versionlist"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/toolbar"
+            android:padding="5dp"
+            android:visibility="@{androidVersionViewModel.hasData ? View.VISIBLE : View.GONE}"
+
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/no_data"
+            android:visibility="@{androidVersionViewModel.hasData ?  View.GONE : View.VISIBLE}"
+            />
+
+
+    </RelativeLayout>
+</layout>
