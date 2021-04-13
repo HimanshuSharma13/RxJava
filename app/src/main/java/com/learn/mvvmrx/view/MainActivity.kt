@@ -17,7 +17,7 @@ class MainActivity : AppCompatActivity() {
     private var mPageDetailViewModel: PageDetailViewModel? = null
     private var mGetPageInfo: DisposableObserver<*>? = null
     private var mPageDetailList: RecyclerView? = null
-    private var mVersionAdapter: VersionAdapter? = null
+    private var mVersionAdapter: PageInfoAdapter? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         initDataBinding()
@@ -34,22 +34,14 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(mMainActivityBinding!!.toolbar)
         mPageDetailList = mMainActivityBinding!!.rlVersionlist
         mPageDetailList!!.layoutManager = LinearLayoutManager(this)
-        mVersionAdapter = VersionAdapter()
+        mVersionAdapter = PageInfoAdapter()
         mVersionAdapter!!.showList(mPageDetailViewModel?.dataList)
         mPageDetailList!!.adapter = mVersionAdapter
     }
 
-    private val androidVersion: Unit
+    private val pageDetails: Unit
         private get() {
             mGetPageInfo = object : DisposableObserver<PageInfo?>() {
-//                override fun onNext(data: PageInfo) {
-//                    if (data != null && data.data!!.size > 0) {
-//                        mAndroidVersionViewModel!!.updateVersionDataList(data.data)
-//                        mMainActivityBinding!!.androidVersionViewModel = mAndroidVersionViewModel
-//                        updateList()
-//                    }
-//                }
-
                 override fun onError(e: Throwable) {
                     Logger.d("Android error", e.message)
                 }
@@ -75,7 +67,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        androidVersion
+        pageDetails
     }
 
     override fun onDestroy() {

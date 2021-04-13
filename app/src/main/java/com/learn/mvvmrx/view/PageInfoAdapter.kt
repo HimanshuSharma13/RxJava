@@ -7,20 +7,20 @@ import android.view.ViewGroup
 import com.learn.mvvmrx.R
 import com.learn.mvvmrx.databinding.ItemVersionLayoutBinding
 import com.learn.mvvmrx.model.Datum
-import com.learn.mvvmrx.view.VersionAdapter.VersionAdapterViewHolder
+import com.learn.mvvmrx.view.PageInfoAdapter.DetailAdapterViewHolder
 
-class VersionAdapter : RecyclerView.Adapter<VersionAdapterViewHolder>() {
+class PageInfoAdapter : RecyclerView.Adapter<DetailAdapterViewHolder>() {
     private var mList: List<Datum?>? = null
     private var mInflater: LayoutInflater? = null
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VersionAdapterViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DetailAdapterViewHolder {
         if (mInflater == null) {
             mInflater = LayoutInflater.from(parent.context)
         }
         val binding: ItemVersionLayoutBinding = DataBindingUtil.inflate(mInflater!!, R.layout.item_version_layout, parent, false)
-        return VersionAdapterViewHolder(binding)
+        return DetailAdapterViewHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: VersionAdapterViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: DetailAdapterViewHolder, position: Int) {
         holder.binding.singleVersion = mList!![position]
     }
 
@@ -28,7 +28,7 @@ class VersionAdapter : RecyclerView.Adapter<VersionAdapterViewHolder>() {
         return if (mList != null && mList!!.size > 0) mList!!.size else 0
     }
 
-    class VersionAdapterViewHolder(val binding: ItemVersionLayoutBinding) : RecyclerView.ViewHolder(binding.root)
+    class DetailAdapterViewHolder(val binding: ItemVersionLayoutBinding) : RecyclerView.ViewHolder(binding.root)
 
     fun showList(noteList: List<Datum?>?) {
         mList = noteList

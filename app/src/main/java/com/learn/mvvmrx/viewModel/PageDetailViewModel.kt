@@ -5,6 +5,7 @@ import com.learn.mvvmrx.api.AndroidUserAPI
 import com.learn.mvvmrx.model.AndroidVersion
 import com.learn.mvvmrx.model.Datum
 import com.learn.mvvmrx.model.PageInfo
+import com.learn.mvvmrx.repository.PageDetailRepository
 import com.learn.mvvmrx.util.RetrofitAPI
 import io.reactivex.Observer
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -12,16 +13,11 @@ import io.reactivex.schedulers.Schedulers
 import java.util.*
 
 class PageDetailViewModel(private val mContext: Context) : Observable() {
-    private val mVersion: AndroidVersion? = null
     var dataList: List<Datum?>?
         private set
 
     fun getPageInformation(mObserver: Observer<in PageInfo?>?) {
-        RetrofitAPI.retrofit.create(AndroidUserAPI::class.java)
-                .androidVersion
-                ?.observeOn(AndroidSchedulers.mainThread())
-                ?.subscribeOn(Schedulers.io())
-                ?.subscribe(mObserver)
+        PageDetailRepository.getPageInformation(mObserver)
     }
 
     fun updateVersionDataList(list: List<Datum?>?) {
