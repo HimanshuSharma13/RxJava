@@ -7,10 +7,16 @@ import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import com.learn.mvvmrx.R
 import com.learn.mvvmrx.databinding.ActivityMainBinding
+import com.learn.mvvmrx.model.Datum
 import com.learn.mvvmrx.model.PageInfo
 import com.learn.mvvmrx.util.Logger
 import com.learn.mvvmrx.viewModel.PageDetailViewModel
+import io.reactivex.Observable
+import io.reactivex.Observer
+import io.reactivex.Scheduler
+import io.reactivex.functions.BiFunction
 import io.reactivex.observers.DisposableObserver
+import io.reactivex.schedulers.Schedulers
 
 class MainActivity : AppCompatActivity() {
     private var mMainActivityBinding: ActivityMainBinding? = null
@@ -39,9 +45,18 @@ class MainActivity : AppCompatActivity() {
         mPageDetailList!!.adapter = mVersionAdapter
     }
 
-    private val pageDetails: Unit
+
+    private fun getObservable(pageCount:String):Observable<PageInfo?>?{
+        return mPageDetailViewModel?.getPageInformation(pageCount)
+    }
+
+    private fun getObserver(): Observer<List<Datum>?> {
+        return pageDetails
+    }
+
+    private val pageDetails: DisposableObserver<List<Datum>?>
         private get() {
-            mGetPageInfo = object : DisposableObserver<PageInfo?>() {
+            mGetPageInfo = object : DisposableObserver<List<Datum>?>() {
                 override fun onError(e: Throwable) {
                     Logger.d("Android error", e.message)
                 }
@@ -50,15 +65,18 @@ class MainActivity : AppCompatActivity() {
                     Logger.d("Android complete", "done")
                 }
 
-                override fun onNext(data: PageInfo?) {
-                    if (data != null && data.data!!.size > 0) {
-                        mPageDetailViewModel!!.updateVersionDataList(data.data)
+                override fun onNext(data: List<Datum>?) {
+                    if (data != null && data!!.size > 0) {
+                        mPageDetailViewModel!!.updateVersionDataList(data)
                         mMainActivityBinding!!.pageDetailViewModel = mPageDetailViewModel
                         updateList()
                     }
                 }
             }
-            mPageDetailViewModel!!.getPageInformation(mGetPageInfo as DisposableObserver<PageInfo?>)
+
+//           var mObservable:Observable<PageInfo?>? = mPageDetailViewModel!!.getPageInformation(mGetPageInfo as DisposableObserver<PageInfo?>)
+//        mObservable?.subscribe(mGetPageInfo as DisposableObserver<PageInfo?>)
+        return mGetPageInfo as DisposableObserver<List<Datum>?>
         }
 
     private fun updateList() {
@@ -68,6 +86,13 @@ class MainActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         pageDetails
+        Observable.zip(getObservable("1")?.subscribeOn(Schedulers.io()),getObservable("2")?.subscribeOn(Schedulers.io()), BiFunction<PageInfo?,PageInfo?,List<Datum>>{
+            detail1,detail2->
+            var arr:ArrayList<Datum> = ArrayList<Datum>()
+            detail1?.data?.let { arr.addAll(it) }
+            detail2?.data?.let { arr.addAll(it) }
+            return@BiFunction arr.toList()
+        }).subscribeOn(Schedulers.io()).subscribe(getObserver())
     }
 
     override fun onDestroy() {

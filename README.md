@@ -11,3 +11,5 @@ This code is demonstration of,
 
 The final goal is, to get the data from Server and showing that in the APP.
 
+>#### App design ####
+![picture alt](https://github.com/HimanshuSharma13/RxJava/tree/rx_mvvm_retrofit/app/src/main/java/com/learn/mvvmrx/screens/home.png "App design screens")

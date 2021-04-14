@@ -16,8 +16,8 @@ class PageDetailViewModel(private val mContext: Context) : Observable() {
     var dataList: List<Datum?>?
         private set
 
-    fun getPageInformation(mObserver: Observer<in PageInfo?>?) {
-        PageDetailRepository.getPageInformation(mObserver)
+    fun getPageInformation(pageCount:String): io.reactivex.Observable<PageInfo?>? {
+       return PageDetailRepository.getPageInformation(pageCount)
     }
 
     fun updateVersionDataList(list: List<Datum?>?) {

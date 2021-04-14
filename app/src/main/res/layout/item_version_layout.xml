@@ -1,26 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
         <variable
             name="singleVersion"
             type="com.learn.mvvmrx.model.Datum" />
+        <import type="com.learn.mvvmrx.util.ImageUtil"/>
     </data>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:background="@color/lightBg"
+        android:background="@color/colorAccent"
         android:padding="5dp"
         android:layout_margin="5dp"
         >
+        <ImageView
+            android:id="@+id/imgview"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center_vertical"
+            app:profileImage="@{singleVersion.avatar}"
 
+            />
+<!--        android:src="@{v->ImageUtil.Companion.loadImage(v,singleVersion)}"-->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text='@{singleVersion.firstName+" "+singleVersion.lastName}'
             android:textSize="15dp"
+            android:textColor="@color/primaryText"
             />
 
         <TextView
@@ -31,7 +42,8 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{singleVersion.avatar}" />
+            android:text="@{singleVersion.avatar}"
+            android:textColor="@android:color/holo_blue_light"/>
 
     </LinearLayout>
 </layout>
