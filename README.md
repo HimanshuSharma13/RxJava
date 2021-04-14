@@ -14,4 +14,4 @@ This code is demonstration of,
 The final goal is, to zip the result of two api and show the result on recycler view.
 
 >#### App design ####
-![picture alt](https://github.com/HimanshuSharma13/RxJava/blob/rx_mvvm_retrofit/app/src/main/java/com/learn/mvvmrx/screens/home.png "App design screens")
+![picture alt](https://github.com/HimanshuSharma13/RxJava/blob/rx_multithreading_mvvm/app/src/main/java/com/learn/mvvmrx/screens/home.png "App design screens")
