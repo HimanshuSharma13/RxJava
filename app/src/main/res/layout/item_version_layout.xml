@@ -12,7 +12,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
+        android:orientation="horizontal"
         android:background="@color/colorAccent"
         android:padding="5dp"
         android:layout_margin="5dp"
@@ -25,7 +25,14 @@
             app:profileImage="@{singleVersion.avatar}"
 
             />
-<!--        android:src="@{v->ImageUtil.Companion.loadImage(v,singleVersion)}"-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/colorAccent"
+        android:padding="5dp"
+        android:layout_margin="5dp"
+        >
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -44,6 +51,6 @@
             android:layout_height="wrap_content"
             android:text="@{singleVersion.avatar}"
             android:textColor="@android:color/holo_blue_light"/>
-
+    </LinearLayout>
     </LinearLayout>
 </layout>
