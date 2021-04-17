@@ -2,13 +2,7 @@
 
 # RxJava3-Android-Examples - Learn RxJava3 for Android by Examples
 
-[![Mindorks](https://img.shields.io/badge/mindorks-opensource-blue.svg)](https://mindorks.com/open-source-projects)
-[![Mindorks Community](https://img.shields.io/badge/join-community-blue.svg)](https://mindorks.com/join-community)
-[![Mindorks Android Store](https://img.shields.io/badge/Mindorks%20Android%20Store-RxJava3%20Android%20Examples-blue.svg?style=flat)](https://mindorks.com/android/store)
-[![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.svg?v=102)](https://opensource.org/licenses/Apache-2.0)
-[![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](https://github.com/MindorksOpenSource/RxJava3-Android-Examples/blob/master/LICENSE)
 
-### [Take the MindOrks Android Online Course and Learn RxJava](https://bootcamp.mindorks.com)
 
 ### This project is for: 
 * who is migrating to RxJava 3 from RxJava 2 
@@ -30,11 +24,6 @@
 
 ## If this project helps you in anyway, show your love :heart: by putting a :star: on this project :v:
 
-### Learn to build a ride-sharing Android app like Uber, Lyft - [Check here](https://github.com/MindorksOpenSource/ridesharing-uber-lyft-app)
-
-### Kotlin-Coroutines-Android-Examples - [Check here](https://github.com/MindorksOpenSource/Kotlin-Coroutines-Android-Examples)
-
-[Check out MindOrks awesome open source projects here](https://mindorks.com/open-source-projects)
 
 ### License
 ```
