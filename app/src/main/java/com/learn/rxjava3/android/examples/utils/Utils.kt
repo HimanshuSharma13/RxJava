@@ -19,6 +19,11 @@ object Utils {
         val apiUserThree = ApiUser(firstname = "Anand", lastname = "Gaurav")
         apiUserList.add(apiUserThree)
 
+        val apiUserFour = ApiUser(firstname = "Himanshu", lastname = "Sharma")
+        apiUserList.add(apiUserFour)
+
+
+
         return apiUserList
     }
 
@@ -33,6 +38,12 @@ object Utils {
         val userTwo = User(id = 2, firstname = "Janishar", lastname = "Ali")
         userList.add(userTwo)
 
+        val userThree = User(id= 5, firstname = "Himanshu", lastname = "Sharma")
+        userList.add(userThree)
+
+        val userFour = User(id= 6, firstname = "Anirudh", lastname = "Sharma")
+        userList.add(userFour)
+
         return userList
     }
 
@@ -46,6 +57,13 @@ object Utils {
 
         val userTwo = User(id = 3, firstname = "Janishar", lastname = "Ali")
         userList.add(userTwo)
+
+        val userThree = User(id = 5, firstname = "Himanshu", lastname = "Sharma")
+        userList.add(userThree)
+
+        val userFour = User(id = 6, firstname = "Anirudh", lastname = "Sharma")
+        userList.add(userFour)
+
 
         return userList
     }

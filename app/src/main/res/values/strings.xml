@@ -11,6 +11,6 @@
     <string name="filter">Filter</string>
     <string name="concat">Concat</string>
     <string name="merge">Merge</string>
-    <string name="delay">delay</string>
+    <string name="delay">Zip+FlatMap+Filter</string>
     <string name="result">Result</string>
 </resources>

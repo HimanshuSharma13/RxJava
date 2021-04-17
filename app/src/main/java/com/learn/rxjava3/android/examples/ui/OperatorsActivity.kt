@@ -30,6 +30,10 @@ class OperatorsActivity : AppCompatActivity() {
         startActivity(Intent(this@OperatorsActivity, LoginActivity::class.java))
     }
 
+    fun startZipFlatMapFilterExampleActivity(view: View) {
+        startActivity(Intent(this@OperatorsActivity, ZipFlatMapFilterExampleActivity::class.java))
+    }
+
     fun startTimerActivity(view: View) {
         startActivity(Intent(this@OperatorsActivity, TimerExampleActivity::class.java))
     }

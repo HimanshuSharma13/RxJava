@@ -41,8 +41,9 @@ class ConcatExampleActivity : AppCompatActivity() {
     private fun doSomeWork() {
         val observableA = Observable.fromArray("A1", "A2", "A3", "A4")
         val observableB = Observable.fromArray("B1", "B2", "B3", "B4")
+        val observableC = Observable.fromArray("C1", "C2", "C3", "C4")
 
-        Observable.concat(observableA, observableB)
+        Observable.concat(observableA, observableB,observableC)
             .subscribe(getObserver())
     }
 
